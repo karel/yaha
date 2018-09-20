@@ -1,7 +1,10 @@
 #ifndef HIDDEVICE_H
 #define HIDDEVICE_H
 
+#ifndef _UNICODE
 #define _UNICODE
+#endif
+
 #define TIMEOUT 50
 
 #include <windows.h>
@@ -56,68 +59,68 @@ class HidDevice
         /*!
          * Simply marks the device as connected.
          */
-        void connected() {m_connected = true;};
+        void connected() {m_connected = true;}
         //! Check if the device is connected
         /*!
          * \return  true if connected, false otherwise
          */
-        bool isConnected() {return m_connected;};
+        bool isConnected() {return m_connected;}
 
 		//! Function
 		/*!
          * \return Product ID
 		 */
-        unsigned short getPid() {return m_attributes.ProductID;};
+        unsigned short getPid() {return m_attributes.ProductID;}
 		//! Function
 		/*!
          * \return Vendor ID
 		 */
-        unsigned short getVid() {return m_attributes.VendorID;};
+        unsigned short getVid() {return m_attributes.VendorID;}
 		//! Function
 		/*!
          * \return Version number
 		 */
-        unsigned short getVersionNumber() {return m_attributes.VersionNumber;};
+        unsigned short getVersionNumber() {return m_attributes.VersionNumber;}
         //! Get the device path
-        std::wstring getPath() {return m_path;};
+        std::wstring getPath() {return m_path;}
         //! Get the device manufacturer string
-        std::wstring getManufacturer() {return m_manufacturer;};
+        std::wstring getManufacturer() {return m_manufacturer;}
         //! Get the device product string
-        std::wstring getProduct() {return m_product;};
+        std::wstring getProduct() {return m_product;}
         //! Get the device serial number string
-        std::wstring getSerialNumber() {return m_serialNumber;};
+        std::wstring getSerialNumber() {return m_serialNumber;}
 
 		//! Set the function to be called when device is removed
 		/*!
 		 * \param cb	Callback
 		 */
-        void setCallbackRemoval(std::function<void(HidDevice*)> cb) {m_callbackRemoval = cb;};
+        void setCallbackRemoval(std::function<void(HidDevice*)> cb) {m_callbackRemoval = cb;}
 		//! Get the function to be called when device is removed
 		/*!
 		 * \return		Callback or nullptr
 		 */
-		std::function<void(HidDevice*)> getCallbackRemoval() {return m_callbackRemoval;};
+        std::function<void(HidDevice*)> getCallbackRemoval() {return m_callbackRemoval;}
         //! Set the function to be called when non-blocking read is completed
         /*!
          * \param cb	Callback
          */
-        void setCallbackReadComplete(std::function<void(HidDevice*)> cb) {m_callbackReadComplete = cb;};
+        void setCallbackReadComplete(std::function<void(HidDevice*)> cb) {m_callbackReadComplete = cb;}
 		//! Set the function to be called when non-blocking write is completed
 		/*!
 		 * \param cb	Callback
 		 */
-		void setCallbackWriteComplete(std::function<void(HidDevice*)> cb) {m_callbackWriteComplete = cb;};
+        void setCallbackWriteComplete(std::function<void(HidDevice*)> cb) {m_callbackWriteComplete = cb;}
 
 		//! Set read to be blocking or non-blocking
 		/*!
 		 * \param a		true - blocking, false - non-blocking
 		 */
-		void setReadBlocking(bool a) {m_readBlocking = a;};
+        void setReadBlocking(bool a) {m_readBlocking = a;}
         //! Set the non-blocking variant of read to read continuously or only once
         /*!
          * \param a     true - continuous read, false - single read
          */
-        void setReadContinuous(bool a) {m_readContinuous = a;};
+        void setReadContinuous(bool a) {m_readContinuous = a;}
 		//! Read from the device
 		/*!
          * Read from the device (blocking by default)
@@ -127,7 +130,7 @@ class HidDevice
 		/*!
 		 * \param a		true - blocking, false - non-blocking
 		 */
-		void setWriteBlocking(bool a) {m_writeBlocking = a;};
+        void setWriteBlocking(bool a) {m_writeBlocking = a;}
 		//! Write data to the device
 		/*!
          * \param b     Pointer to the data to write

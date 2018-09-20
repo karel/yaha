@@ -22,7 +22,7 @@ QMAKE_TARGET_PRODUCT = Yaha example
 QMAKE_TARGET_DESCRIPTION = "Yaha example"
 
 RESOURCES += \
-    untitled.qrc
+    yaha_example.qrc
 
 RC_ICONS += usb.ico
 
